@@ -1,4 +1,4 @@
-package com.iyzico.bootmon.server.registry;
+package com.iyzico.bootmon.server;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;

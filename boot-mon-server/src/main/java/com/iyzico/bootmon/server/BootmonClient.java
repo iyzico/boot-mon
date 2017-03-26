@@ -1,8 +1,10 @@
-package com.iyzico.bootmon.server.registry;
+package com.iyzico.bootmon.server;
 
 import org.springframework.hateoas.ResourceSupport;
 
-public class BootmonClient extends ResourceSupport {
+import java.io.Serializable;
+
+public class BootmonClient extends ResourceSupport implements Serializable{
 
     private String name;
     private String ip;
