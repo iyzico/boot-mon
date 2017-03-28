@@ -1,9 +1,7 @@
 == boot-mon
 
-image::https://travis-ci.org/iyzico/boot-mon.svg?branch=master[Build Status, link="https://travis-ci.org/iyzico/boot-mon"]
-
-image::https://coveralls.io/repos/github/iyzico/boot-mon/badge.svg?branch=master[Build Status, link="https://coveralls.io/github/iyzico/boot-mon?branch=master"]
-
+image:https://travis-ci.org/iyzico/boot-mon.svg?branch=master[Build Status, link="https://travis-ci.org/iyzico/boot-mon"]
+image:https://coveralls.io/repos/github/iyzico/boot-mon/badge.svg?branch=master[Build Status, link="https://coveralls.io/github/iyzico/boot-mon?branch=master"]
 
 Boot Mon is a lightweight monitoring web application for Spring Boot applications. You can monitor Spring Boot Actuator Metrics real time.
 
