@@ -3,6 +3,7 @@ package com.iyzico.bootmon.server;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,11 @@ public class BootmonClientRepositoryImpl implements BootmonClientRepository {
 
     public BootmonClient findBootmonClientByIp(String ip) throws IOException {
         final String KEY = String.format(KEY_PREFIX, ip);
-        return objectMapper.readValue(((String) redisTemplate.opsForValue().get(KEY)).getBytes(), BootmonClient.class);
+        String value = (String) redisTemplate.opsForValue().get(KEY);
+        BootmonClient bootmonClient = new BootmonClient();
+        if (StringUtils.isNotBlank(value)) {
+            bootmonClient = objectMapper.readValue(value, BootmonClient.class);
+        }
+        return bootmonClient;
     }
 }
