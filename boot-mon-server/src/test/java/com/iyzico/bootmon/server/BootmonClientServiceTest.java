@@ -36,11 +36,11 @@ public class BootmonClientServiceTest {
         bootmonClient.setHealthCheckPath("/healht");
         bootmonClient.setPort("8080");
         bootmonClientService.saveBootmonClient(bootmonClient);
-        BootmonClient bootmonClient1Actual = bootmonClientService.findBootmonClient(bootmonClient.getName());
-        assertThat(bootmonClient1Actual.getName()).isEqualTo(bootmonClient.getName());
-        assertThat(bootmonClient1Actual.getIp()).isEqualTo(bootmonClient.getIp());
-        assertThat(bootmonClient1Actual.getPort()).isEqualTo(bootmonClient.getPort());
-        assertThat(bootmonClient1Actual.getHealthCheckPath()).isEqualTo(bootmonClient.getHealthCheckPath());
+        BootmonClient bootmonClientActual = bootmonClientService.findBootmonClient(bootmonClient.getName());
+        assertThat(bootmonClientActual.getName()).isEqualTo(bootmonClient.getName());
+        assertThat(bootmonClientActual.getIp()).isEqualTo(bootmonClient.getIp());
+        assertThat(bootmonClientActual.getPort()).isEqualTo(bootmonClient.getPort());
+        assertThat(bootmonClientActual.getHealthCheckPath()).isEqualTo(bootmonClient.getHealthCheckPath());
     }
 
     @After
