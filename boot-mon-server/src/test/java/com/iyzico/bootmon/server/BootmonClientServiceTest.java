@@ -1,25 +1,35 @@
 package com.iyzico.bootmon.server;
 
-import com.iyzico.bootmon.server.config.RedisConfig;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.embedded.RedisServer;
+
+import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ApplicationTest.class)
-@ContextConfiguration(classes = RedisConfig.class)
 public class BootmonClientServiceTest {
+
     @Autowired
     BootmonClientServiceImpl bootmonClientService;
 
+    RedisServer redisServer;
+
+    @Before
+    public void setUp() throws IOException {
+        redisServer = new RedisServer(6379);
+        redisServer.start();
+    }
 
     @Test
-    public void should_redis_save_sucessfully() {
+    public void should_redis_save_sucessfully() throws IOException {
         BootmonClient bootmonClient = new BootmonClient();
         bootmonClient.setName("boot");
         bootmonClient.setIp("127.0.0.1");
@@ -31,5 +41,10 @@ public class BootmonClientServiceTest {
         assertThat(bootmonClient1Actual.getIp()).isEqualTo(bootmonClient.getIp());
         assertThat(bootmonClient1Actual.getPort()).isEqualTo(bootmonClient.getPort());
         assertThat(bootmonClient1Actual.getHealthCheckPath()).isEqualTo(bootmonClient.getHealthCheckPath());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        redisServer.stop();
     }
 }

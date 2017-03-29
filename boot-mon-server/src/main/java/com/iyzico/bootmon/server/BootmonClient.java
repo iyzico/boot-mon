@@ -4,7 +4,7 @@ import org.springframework.hateoas.ResourceSupport;
 
 import java.io.Serializable;
 
-public class BootmonClient extends ResourceSupport implements Serializable{
+public class BootmonClient extends ResourceSupport{
 
     private String name;
     private String ip;

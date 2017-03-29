@@ -1,5 +1,6 @@
 package com.iyzico.bootmon.server.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,13 +10,16 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
 @Configuration
 @ComponentScan("com.iyzico.bootmon.server")
+@ConfigurationProperties(prefix = "spring.redis")
 public class RedisConfig {
+    private String host;
+    private int port;
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         JedisConnectionFactory jedisConFactory = new JedisConnectionFactory();
-        jedisConFactory.setHostName("localhost");
-        jedisConFactory.setPort(6379);
+        jedisConFactory.setHostName(host);
+        jedisConFactory.setPort(port);
         return jedisConFactory;
     }
 
@@ -25,5 +29,21 @@ public class RedisConfig {
         template.setConnectionFactory(jedisConnectionFactory());
         template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
         return template;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 }

@@ -1,16 +1,12 @@
 package com.iyzico.bootmon.server;
 
 
-import java.util.Map;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.io.IOException;
 
 public interface BootmonClientRepository {
-    void saveBootmonClient(BootmonClient bootmonClient);
+    void saveBootmonClient(BootmonClient bootmonClient) throws JsonProcessingException;
 
-    void updateBootmonClient(BootmonClient bootmonClient);
-
-    BootmonClient findBootmonClient(String name);
-
-    Map<Object, Object> findAllBootmonClients();
-
-    void deleteBootmonClient(String name);
+    BootmonClient findBootmonClient(String name) throws IOException;
 }
