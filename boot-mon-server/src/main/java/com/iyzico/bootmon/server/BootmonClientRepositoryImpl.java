@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Repository
 public class BootmonClientRepositoryImpl implements BootmonClientRepository {
@@ -28,13 +29,12 @@ public class BootmonClientRepositoryImpl implements BootmonClientRepository {
         redisTemplate.opsForValue().set(KEY, objectMapper.writeValueAsString(bootmonClient));
     }
 
-    public BootmonClient findBootmonClientByIp(String ip) throws IOException {
+    public Optional<BootmonClient> findBootmonClientByIp(String ip) throws IOException {
         final String KEY = String.format(KEY_PREFIX, ip);
         String value = (String) redisTemplate.opsForValue().get(KEY);
-        BootmonClient bootmonClient = new BootmonClient();
         if (StringUtils.isNotBlank(value)) {
-            bootmonClient = objectMapper.readValue(value, BootmonClient.class);
+            return Optional.of(objectMapper.readValue(value, BootmonClient.class));
         }
-        return bootmonClient;
+        return Optional.empty();
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class BootmonClientServiceImpl implements BootmonClientService {
@@ -18,7 +19,7 @@ public class BootmonClientServiceImpl implements BootmonClientService {
 
 
 
-    public BootmonClient findBootmonClienByIp(String ip) throws IOException {
+    public Optional<BootmonClient> findBootmonClienByIp(String ip) throws IOException {
         return bootmonClientRepository.findBootmonClientByIp(ip);
     }
 }

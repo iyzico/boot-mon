@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import redis.embedded.RedisServer;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,10 +34,12 @@ public class BootmonClientServiceTest {
         BootmonClient bootmonClient = new BootmonClient();
         bootmonClient.setName("boot");
         bootmonClient.setIp("127.0.0.1");
-        bootmonClient.setHealthCheckPath("/healht");
+        bootmonClient.setHealthCheckPath("/healthy");
         bootmonClient.setPort("8080");
         bootmonClientService.saveBootmonClient(bootmonClient);
-        BootmonClient bootmonClientActual = bootmonClientService.findBootmonClienByIp(bootmonClient.getIp());
+        Optional<BootmonClient> optionalBootmonClientActual = bootmonClientService.findBootmonClienByIp(bootmonClient.getIp());
+        assertThat(optionalBootmonClientActual.isPresent()).isTrue();
+        BootmonClient bootmonClientActual = optionalBootmonClientActual.get();
         assertThat(bootmonClientActual.getName()).isEqualTo(bootmonClient.getName());
         assertThat(bootmonClientActual.getIp()).isEqualTo(bootmonClient.getIp());
         assertThat(bootmonClientActual.getPort()).isEqualTo(bootmonClient.getPort());
