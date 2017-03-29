@@ -8,5 +8,5 @@ import java.io.IOException;
 public interface BootmonClientRepository {
     void saveBootmonClient(BootmonClient bootmonClient) throws JsonProcessingException;
 
-    BootmonClient findBootmonClient(String name) throws IOException;
+    BootmonClient findBootmonClientByIp(String ip) throws IOException;
 }

@@ -4,32 +4,31 @@ package com.iyzico.bootmon.server;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 @Repository
 public class BootmonClientRepositoryImpl implements BootmonClientRepository {
-    private static final String KEY = "bootmon-client:myclient";
+
+    private String KEY_PREFIX = "bootmon-client:%s";
+
     @Autowired
     private RedisTemplate redisTemplate;
-    private HashOperations hashOps;
 
-    @PostConstruct
-    private void init() {
-        hashOps = redisTemplate.opsForHash();
-    }
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
 
     public void saveBootmonClient(BootmonClient bootmonClient) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        hashOps.put(KEY, bootmonClient.getName(), objectMapper.writeValueAsString(bootmonClient));
+        final String KEY = String.format(KEY_PREFIX, bootmonClient.getIp());
+        redisTemplate.opsForValue().set(KEY, objectMapper.writeValueAsString(bootmonClient));
     }
 
-    public BootmonClient findBootmonClient(String name) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(((String) hashOps.get(KEY, name)).getBytes(), BootmonClient.class);
+    public BootmonClient findBootmonClientByIp(String ip) throws IOException {
+        final String KEY = String.format(KEY_PREFIX, ip);
+        return objectMapper.readValue(((String) redisTemplate.opsForValue().get(KEY)).getBytes(), BootmonClient.class);
     }
 }

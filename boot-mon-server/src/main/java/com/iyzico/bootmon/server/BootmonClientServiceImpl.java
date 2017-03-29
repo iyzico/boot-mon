@@ -16,8 +16,9 @@ public class BootmonClientServiceImpl implements BootmonClientService {
         bootmonClientRepository.saveBootmonClient(bootmonClient);
     }
 
-    @Override
-    public BootmonClient findBootmonClient(String name) throws IOException {
-        return bootmonClientRepository.findBootmonClient(name);
+
+
+    public BootmonClient findBootmonClienByIp(String ip) throws IOException {
+        return bootmonClientRepository.findBootmonClientByIp(ip);
     }
 }

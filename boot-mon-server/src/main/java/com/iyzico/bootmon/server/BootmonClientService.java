@@ -8,6 +8,6 @@ import java.io.IOException;
 public interface BootmonClientService {
     void saveBootmonClient(BootmonClient bootmonClient) throws JsonProcessingException;
 
-    BootmonClient findBootmonClient(String name) throws IOException;
+    BootmonClient findBootmonClienByIp(String ip) throws IOException;
 
 }
