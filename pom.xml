@@ -8,7 +8,6 @@
     <version>1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -20,4 +19,36 @@
         <module>boot-mon-server</module>
         <module>boot-mon-client</module>
     </modules>
+
+    <ciManagement>
+        <url>https://travis-ci.org/iyzico/boot-mon/</url>
+        <system>Travis</system>
+    </ciManagement>
+
+    <properties>
+        <coveralls.version>4.3.0</coveralls.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.9</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- CODE COVERAGE PUBLISHER -->
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
