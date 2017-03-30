@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ApplicationTest.class)
-public class BootmonClientServiceTest {
+public class BootmonClientServiceIntegrationTest {
 
     @Autowired
     BootmonClientServiceImpl bootmonClientService;

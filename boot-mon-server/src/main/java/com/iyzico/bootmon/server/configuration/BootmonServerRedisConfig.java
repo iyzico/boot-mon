@@ -1,4 +1,4 @@
-package com.iyzico.bootmon.server.config;
+package com.iyzico.bootmon.server.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -9,9 +9,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
 @Configuration
-@ComponentScan("com.iyzico.bootmon.server")
 @ConfigurationProperties(prefix = "spring.redis")
-public class RedisConfig {
+public class BootmonServerRedisConfig {
     private String host;
     private int port;
 
