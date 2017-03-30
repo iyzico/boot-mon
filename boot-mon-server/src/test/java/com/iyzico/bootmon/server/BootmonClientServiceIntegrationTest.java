@@ -25,7 +25,7 @@ public class BootmonClientServiceIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        redisServer = new RedisServer(6379);
+        redisServer = new RedisServer();
         redisServer.start();
     }
 
