@@ -7,7 +7,10 @@ install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 script:
-  - mvn test
+  - mvn test jacoco:report
+
+after_success:
+  - mvn coveralls:report
 
 notifications:
   email:
