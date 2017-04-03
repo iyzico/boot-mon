@@ -24,6 +24,8 @@ public class BootmonClientControllerIT extends IntegrationTest {
         HttpEntity<BootmonClient> response = bootmonClientController.create(bootmonClient);
 
         //then
+        assertThat(response.getBody().getName()).isEqualTo("myClient");
+        assertThat(response.getBody().getManagementUrl()).isEqualTo("http://myhost/management");
         assertThat(response.getBody().getHealthCheckUrl()).isEqualTo("http://myhost/health");
     }
 }
