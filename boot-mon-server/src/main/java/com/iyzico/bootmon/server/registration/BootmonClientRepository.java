@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.Optional;
 
+@Repository
 public class BootmonClientRepository {
 
     private static final String KEY_PREFIX = "bootmon-client:%s";
