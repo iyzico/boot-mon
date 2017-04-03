@@ -8,7 +8,6 @@
     <version>1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -22,32 +21,52 @@
     </modules>
 
     <properties>
+        <coveralls.version>4.3.0</coveralls.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java-compileSource.version>1.8</java-compileSource.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     </properties>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                        <compilerId>javac</compilerId>
-                        <source>${java-compileSource.version}</source>
-                        <target>${java-compileSource.version}</target>
-                        <showDeprecation>true</showDeprecation>
-                        <showWarnings>true</showWarnings>
-                        <verbose>false</verbose>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+    <ciManagement>
+        <url>https://travis-ci.org/iyzico/boot-mon/</url>
+        <system>Travis</system>
+    </ciManagement>
 
+
+    <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <compilerId>javac</compilerId>
+                    <source>${java-compileSource.version}</source>
+                    <target>${java-compileSource.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <verbose>false</verbose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.9</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls.version}</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

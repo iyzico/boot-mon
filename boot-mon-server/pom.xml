@@ -17,6 +17,10 @@
         <docker.image.prefix>iyzico</docker.image.prefix>
         <docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
         <spring-data-redis.version>1.8.0.RELEASE</spring-data-redis.version>
+        <jedis.version>2.9.0</jedis.version>
+        <assertj.version>3.6.2</assertj.version>
+        <embedded-redis.version>0.6</embedded-redis.version>
+        <commons.version>3.5</commons.version>
     </properties>
 
     <build>
@@ -63,8 +67,30 @@
             <version>${spring-data-redis.version}</version>
         </dependency>
         <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kstyrc</groupId>
+            <artifactId>embedded-redis</artifactId>
+            <version>${embedded-redis.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
