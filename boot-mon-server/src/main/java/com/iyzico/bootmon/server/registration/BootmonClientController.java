@@ -1,4 +1,4 @@
-package com.iyzico.bootmon.server;
+package com.iyzico.bootmon.server.registration;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -22,6 +22,6 @@ public class BootmonClientController {
                 .slash(bootmonClient.getId())
                 .withSelfRel());
 
-        return new ResponseEntity<BootmonClient>(bootmonClient, HttpStatus.OK);
+        return new ResponseEntity<>(bootmonClient, HttpStatus.OK);
     }
 }
