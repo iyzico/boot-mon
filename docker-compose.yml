@@ -1,4 +1,0 @@
-boot-mon-server:
-  image: iyzico/boot-mon-server:latest
-  ports:
-   - 8080:8080

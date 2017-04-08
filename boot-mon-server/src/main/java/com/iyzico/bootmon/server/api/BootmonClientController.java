@@ -1,5 +1,6 @@
-package com.iyzico.bootmon.server;
+package com.iyzico.bootmon.server.api;
 
+import com.iyzico.bootmon.server.dto.shared.BootmonClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

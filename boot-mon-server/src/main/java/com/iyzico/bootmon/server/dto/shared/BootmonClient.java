@@ -1,8 +1,6 @@
-package com.iyzico.bootmon.server;
+package com.iyzico.bootmon.server.dto.shared;
 
 import org.springframework.hateoas.ResourceSupport;
-
-import java.io.Serializable;
 
 public class BootmonClient extends ResourceSupport{
 

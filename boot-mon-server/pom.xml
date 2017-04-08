@@ -48,6 +48,7 @@
         </plugins>
     </build>
 
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,4 +95,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>
