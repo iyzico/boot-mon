@@ -1,4 +1,41 @@
-boot-mon-server:
-  image: iyzico/boot-mon-server:latest
-  ports:
-   - 8080:8080
+version: '2'
+services:
+
+  boot-mon-server:
+    image: iyzico/boot-mon-server:latest
+    ports:
+     - "8080:8080"
+
+#  rabbitmq:
+#    image: rabbitmq:3.6.0-management
+#    hostname: rabbitmq
+#    container_name: rabbitmq
+#    restart: always
+#    ports:
+#    - "5672:5672"
+#    - "15672:15672"
+#    environment:
+#    - HOSTNAME=rabbitmq
+#    - RABBITMQ_NODENAME=rabbitmq
+#    - RABBITMQ_DEFAULT_USER=root
+#    - RABBITMQ_DEFAULT_PASS=root
+#    volumes:
+#    - /home/{user}/Documents/rabbitmq:/var/lib/rabbitmq
+
+  mysql:
+    image: mysql:5.7
+    hostname: mysql
+    container_name: mysql
+    restart: always
+    ports:
+    - "3306:3306"
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=dev
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+
+

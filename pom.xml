@@ -20,14 +20,32 @@
         <module>boot-mon-client</module>
     </modules>
 
+    <properties>
+        <coveralls.version>4.3.0</coveralls.version>
+    </properties>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-parent</artifactId>
+                <version>Camden.SR6</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
     <ciManagement>
         <url>https://travis-ci.org/iyzico/boot-mon/</url>
         <system>Travis</system>
     </ciManagement>
 
-    <properties>
-        <coveralls.version>4.3.0</coveralls.version>
-    </properties>
+
+
     <build>
         <plugins>
             <plugin>
@@ -51,4 +69,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
