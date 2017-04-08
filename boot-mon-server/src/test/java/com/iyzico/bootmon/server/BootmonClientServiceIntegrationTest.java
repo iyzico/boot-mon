@@ -1,5 +1,7 @@
 package com.iyzico.bootmon.server;
 
+import com.iyzico.bootmon.server.dto.shared.BootmonClient;
+import com.iyzico.bootmon.server.service.core.impl.BootmonClientServiceImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

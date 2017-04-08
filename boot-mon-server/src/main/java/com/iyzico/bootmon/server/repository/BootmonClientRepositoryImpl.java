@@ -1,8 +1,9 @@
-package com.iyzico.bootmon.server;
+package com.iyzico.bootmon.server.repository;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iyzico.bootmon.server.dto.shared.BootmonClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
