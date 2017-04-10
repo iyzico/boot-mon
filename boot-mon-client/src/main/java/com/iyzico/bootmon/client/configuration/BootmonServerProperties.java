@@ -1,5 +1,6 @@
 package com.iyzico.bootmon.client.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "bootmon.server")
@@ -13,11 +14,13 @@ public class BootmonServerProperties {
     /**
      * Boot-mon server HTTP Basic Authentication user name
      */
+    @Value("${userName:changeIt}")
     private String userName;
 
     /**
      * Boot-mon server HTTP Basic Authentication password
      */
+    @Value("${password:changeIt}")
     private String password;
 
     /**

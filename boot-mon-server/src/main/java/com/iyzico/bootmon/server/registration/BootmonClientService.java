@@ -16,12 +16,12 @@ public class BootmonClientService {
 
     public void saveBootmonClient(BootmonClient bootmonClient) {
         bootmonClientRequestValidator.validate(bootmonClient);
-        bootmonClientRepository.saveBootmonClient(bootmonClient);
+        bootmonClientRepository.save(bootmonClient);
     }
 
     public BootmonClient findBootmonClientByName(String name) {
         bootmonClientRequestValidator.validateName(name);
-        Optional<BootmonClient> bootmonClient = bootmonClientRepository.findBootmonClientByName(name);
+        Optional<BootmonClient> bootmonClient = bootmonClientRepository.findByName(name);
         if (bootmonClient.isPresent()) {
             return bootmonClient.get();
         } else {
