@@ -1,4 +1,4 @@
-"package com.iyzico.bootmon.client.registration;
+package com.iyzico.bootmon.client.registration;
 
 public class CreateBootmonClientRequest {
 
