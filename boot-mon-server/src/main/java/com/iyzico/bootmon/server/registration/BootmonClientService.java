@@ -12,7 +12,7 @@ public class BootmonClientService {
     BootmonClientRequestValidator bootmonClientRequestValidator;
 
     @Autowired
-    private BootmonClientRepository bootmonClientRepository;
+    BootmonClientRepository bootmonClientRepository;
 
     public void saveBootmonClient(BootmonClient bootmonClient) {
         bootmonClientRequestValidator.validate(bootmonClient);
