@@ -18,5 +18,6 @@ public class ClientRegistrationService {
 
     @PostConstruct
     public void register(){
+        //TODO registration service should be implemented.
     }
 }
