@@ -19,7 +19,7 @@ public class BootmonClientService {
         bootmonClientRepository.saveBootmonClient(bootmonClient);
     }
 
-    public BootmonClient findBootmonClienByName(String name) {
+    public BootmonClient findBootmonClientByName(String name) {
         bootmonClientRequestValidator.validateName(name);
         Optional<BootmonClient> bootmonClient = bootmonClientRepository.findBootmonClientByName(name);
         if (bootmonClient.isPresent()) {

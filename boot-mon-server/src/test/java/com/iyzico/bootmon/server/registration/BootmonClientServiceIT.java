@@ -26,12 +26,17 @@ public class BootmonClientServiceIT extends IntegrationTest {
 
     @Test
     public void should_persist_bootmon_client_to_redis() throws IOException {
+        //given a bootmon client
         BootmonClient bootmonClient = new BootmonClient();
         bootmonClient.setName("myClient");
         bootmonClient.setManagementUrl("http://myhost/management");
         bootmonClient.setHealthCheckUrl("http://myhost/health");
+
+        //when
         bootmonClientService.saveBootmonClient(bootmonClient);
-        BootmonClient bootmonClientActual = bootmonClientService.findBootmonClienByName(bootmonClient.getName());
+        BootmonClient bootmonClientActual = bootmonClientService.findBootmonClientByName(bootmonClient.getName());
+
+        //then
         assertThat(bootmonClientActual).isNotNull();
         assertThat(bootmonClientActual.getName()).isEqualTo(bootmonClient.getName());
         assertThat(bootmonClientActual.getManagementUrl()).isEqualTo(bootmonClient.getManagementUrl());
