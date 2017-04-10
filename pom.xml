@@ -20,16 +20,35 @@
         <module>boot-mon-client</module>
     </modules>
 
+    <properties>
+        <coveralls.version>4.3.0</coveralls.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java-compileSource.version>1.8</java-compileSource.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+    </properties>
+
     <ciManagement>
         <url>https://travis-ci.org/iyzico/boot-mon/</url>
         <system>Travis</system>
     </ciManagement>
 
-    <properties>
-        <coveralls.version>4.3.0</coveralls.version>
-    </properties>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <compilerId>javac</compilerId>
+                    <source>${java-compileSource.version}</source>
+                    <target>${java-compileSource.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <verbose>false</verbose>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -43,11 +62,14 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- CODE COVERAGE PUBLISHER -->
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>${coveralls.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
